@@ -7,7 +7,8 @@ import ClockCircleOutlined from '@ant-design/icons/ClockCircleOutlined';
 class ServerConsole extends React.Component {
   constructor(props) {
     super(props)
-    this.socket = new WebSocket('ws://' + window.location.hostname.replace('http://', '').replace('https://', '') + ':8888/api/console');
+    this.socket = new WebSocket('ws://' + window.location.hostname.replace('http://', '').replace('https://', '') + ':8888/api/console?token=' + props.token);
+
     this.state = {
       status: 'connecting',
       lines: 'Test\nasddadsaddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddasdasd  sd\nNB!!!',

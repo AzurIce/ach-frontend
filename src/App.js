@@ -1,16 +1,32 @@
+import React from 'react';
 import './App.css';
 // import MaterialList from './components/MaterialList/MaterialList';
 import ServerConsole from './components/ServerConsole/ServerConsole';
+import Login from './components/Login/Login';
 
-function App() {
-  return (
-    <div className="App">
-      <ServerConsole />
-      {/* <MaterialList /> */}
-      {/* <nav>
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = { isLoggedIn: false }
+  }
+
+  render() {
+    if (!this.state.isLoggedIn) {
+      return (
+        <div className="App">
+          <Login onLoggedIn={(token) => { this.setState({ isLoggedIn: true, token: token }) }} />
+        </div>
+      );
+    }
+
+    return (
+      <div className="App">
+        <ServerConsole token={this.state.token}/>
+        {/* <MaterialList /> */}
+        {/* <nav>
         <Link ot="/"
       </nav> */}
-      {/* <header className="App-header">
+        {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -24,8 +40,9 @@ function App() {
           Learn React
         </a>
       </header> */}
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default App;
