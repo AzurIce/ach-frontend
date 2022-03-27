@@ -1,6 +1,7 @@
 import React from "react"
 import "./Login.css"
 import { Input } from 'antd';
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 
 import axios from "axios";
 
@@ -35,10 +36,11 @@ class Login extends React.Component {
     return (
       <div className="LoginContainer">
         <h2>Login</h2>
-        <Input
+        <Input.Password
           value={this.state.password}
           onChange={(e) => this.setState({ password: e.target.value })}
           onPressEnter={(e) => this.login(this.state.password)}
+          iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
         />
       </div>
     )
