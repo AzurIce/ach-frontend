@@ -4,12 +4,14 @@ import './app.css'
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import HelloWorld from './components/HelloWorld.vue'
 import LoginPage from './pages/LoginPage/LoginPage.vue';
+import MainPage from './pages/MainPage/MainPage.vue';
 </script>
 
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3 + Vite" /> -->
-  <LoginPage class="h-screen"/>
+  <!-- <LoginPage class="h-screen"/> -->
+  <MainPage />
 </template>
 
 <style>

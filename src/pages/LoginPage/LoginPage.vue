@@ -1,5 +1,5 @@
 <template>
-  <div class="container flex flex-col justify-center items-center">
+  <div class="w-screen h-screen flex flex-col justify-center items-center">
     <div class="flex flex-col min-w-min w-2/5 h-fit top-1/2 p-4 rounded-lg bg-white shadow-md">
       <div class="mt-1 min-w-max flex">
         <p class="mb-1 text-2xl mr-1">Minecraft 微软账号验证</p>
