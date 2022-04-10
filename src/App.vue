@@ -6,13 +6,18 @@ import MainPage from './pages/MainPage/MainPage.vue';
 
 export default {
   data() {
-    return {
-      isLoggedIn: true
-    }
+    return {}
   },
   components: {
     LoginPage,
     MainPage
+  },
+  beforeMount() {
+    var token = localStorage.getItem('azurcraftToken');
+    this.$store.commit('setToken', token)
+    if (token != null) {
+      this.$store.commit('setLogin')
+    }
   }
 }
 </script>
