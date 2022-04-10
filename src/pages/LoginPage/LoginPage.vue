@@ -1,11 +1,11 @@
 <template>
   <div class="w-screen h-screen flex flex-col justify-center items-center bg-azurcraft bg-no-repeat bg-center ">
-    <div class="flex flex-col items-center min-w-450 w-2/5 h-fit top-1/2 p-4 rounded-lg bg-white shadow-md space-y-2">
+    <div class="flex flex-col items-center min-w-450 w-2/5 h-fit top-1/2 p-4 rounded-lg bg-white bg-opacity-90 shadow-md space-y-2">
       <div class="flex justify-center items-center space-x-2 border w-min p-1 rounded-full">
-        <button class="w-10 h-10 rounded-full" :class="[loginTab == 0 ? 'bg-sky-400' : 'bg-gray-100']" @click="onChooseTab(0)">
+        <button class="w-10 h-10 rounded-full pt-1" :class="[loginTab == 0 ? 'bg-sky-400' : 'bg-gray-100']" @click="onChooseTab(0)">
           <i class="ri-microsoft-fill" :style="[loginTab == 0 ? 'color: white' : '']"></i>
         </button>
-        <button class="w-10 h-10 rounded-full" :class="[loginTab == 1 ? 'bg-sky-400' : 'bg-gray-100']" @click="onChooseTab(1)">
+        <button class="w-10 h-10 rounded-full pt-1" :class="[loginTab == 1 ? 'bg-sky-400' : 'bg-gray-100']" @click="onChooseTab(1)">
           <i class="ri-account-circle-fill" :style="[loginTab == 1 ? 'color: white' : '']"></i>
           <!-- <i v-else class="ri-account-circle-line"></i> -->
         </button>
@@ -24,9 +24,9 @@
         <p class="text-md indent-8 break-all">在新打开的窗口中登录你的 Microsoft 账户，待登陆成功后复制地址栏中“code=”后面的内容（到“&”或结尾结束）到这里点击提交。</p>
     
         <p class="text-md break-all">例：</p>
-        <p class="bg-slate-600 rounded-md pl-2 pr-2 text-slate-100">https://xxx?code=M.R3_BAY.c3b01707-0687-99e2-ac93-d63ce78091ab&lc=2052</p>
+        <p class="bg-slate-600 rounded-md pl-2 pr-2 text-slate-100 font-mono">https://xxx?code=M.R3_BAY.c3b01707-0687-99e2-ac93-d63ce78091ab&lc=2052</p>
         <p class="text-md break-all">只复制：</p>
-        <pre class="bg-slate-600 rounded-md pl-2 pr-2 text-slate-100">M.R3_BAY.c3b01707-0687-99e2-ac93-d63ce78091ab</pre>
+        <pre class="bg-slate-600 rounded-md pl-2 pr-2 text-slate-100 font-mono">M.R3_BAY.c3b01707-0687-99e2-ac93-d63ce78091ab</pre>
 
         <div class="flex justify-center space-x-2">
           <input class="flex-1 pl-2 border rounded-md" v-model="code"/>
