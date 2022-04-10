@@ -169,14 +169,7 @@ export default {
         // TODO: 用户名不能为空
         return;
       }
-      axios
-        .post(
-          "http://localhost:8888/api/user/login",
-          JSON.stringify({ name: this.username, password: this.password }),
-          {
-            headers: { "Content-Type": "application/json" },
-          }
-        )
+      loginByAccount(this.username, this.password)
         .then((res) => {
           console.log(res);
           var token = JSON.parse(res.data).token;
