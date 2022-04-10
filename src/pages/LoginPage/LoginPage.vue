@@ -129,6 +129,8 @@ M.R3_BAY.c3b01707-0687-99e2-ac93-d63ce78091ab</pre
 <script>
 import axios from "axios";
 
+import { loginByCode, loginByAccount } from "/src/lib/api/user.js";
+
 export default {
   data() {
     return {
@@ -145,21 +147,14 @@ export default {
         // TODO: code不能为空
         return;
       }
-      axios
-        .post(
-          "http://localhost:8888/api/user/login",
-          JSON.stringify({ code: this.code }),
-          {
-            headers: { "Content-Type": "application/json" },
-          }
-        )
+      loginByCode(this.code)
         .then((res) => {
           console.log(res);
           var token = JSON.parse(res.data).token;
-          this.$store.commit('setToken', token)
-          this.$store.commit('setLogin')
-          localStorage.setItem('azurcraftToken', token);
-          this.$router.push('/')
+          this.$store.commit("setToken", token);
+          this.$store.commit("setLogin");
+          localStorage.setItem("azurcraftToken", token);
+          this.$router.push("/");
         })
         .catch((err) => {
           console.log(err, err.response);
@@ -185,10 +180,10 @@ export default {
         .then((res) => {
           console.log(res);
           var token = JSON.parse(res.data).token;
-          this.$store.commit('setToken', token)
-          this.$store.commit('setLogin')
-          localStorage.setItem('azurcraftToken', token);
-          this.$router.push('/')
+          this.$store.commit("setToken", token);
+          this.$store.commit("setLogin");
+          localStorage.setItem("azurcraftToken", token);
+          this.$router.push("/");
         })
         .catch((err) => {
           console.log(err, err.response);

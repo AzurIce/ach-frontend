@@ -25,7 +25,7 @@ export default {
 </script>
 
 <template>
-  {{isLoggedIn}}
+  <!-- {{isLoggedIn}} -->
   <!-- {{token}} -->
   <router-view></router-view>
   <!-- <MainPage v-if="isLoggedIn" />

@@ -2,6 +2,10 @@ module.exports = {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   content: [],
   theme: {
+    backgroundColor: theme => ({
+      ...theme('colors'),
+      'background': '#fafafa',
+    }),
     extend: {
       backgroundImage: {
         'azurcraft': "url('src/assets/AzurCraft.svg')"

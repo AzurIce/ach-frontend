@@ -15,11 +15,8 @@ const store = createStore({
     unsetLogin(state) {
       state.isLoggedIn = false;
     },
-    setAdmin(state) {
-      state.isAdmin = false;
-    },
-    unsetAdmin(state) {
-      state.isAdmin = false;
+    setAdmin(state, isAdmin) {
+      state.isAdmin = isAdmin;
     },
     setToken(state, token) {
       state.token = token;

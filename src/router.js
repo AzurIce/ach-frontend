@@ -3,10 +3,18 @@ import LoginPage from './pages/LoginPage/LoginPage.vue'
 import MainPage from './pages/MainPage/MainPage.vue'
 import Console from './pages/MainPage/Console/Console.vue'
 import Index from './pages/MainPage/Index/Index.vue'
-import Servers from './pages/MainPage/Servers/Servers.vue'
+import Server from './pages/MainPage/Server/Server.vue'
+import Player from './pages/MainPage/Player/Player.vue'
 import store from './store'
 
+import { isAdmin } from './lib/api/user'
+
 const routes = [
+  {
+    name: 'LoginPage',
+    path: '/login',
+    component: LoginPage
+  },
   {
     name: 'MainPage',
     path: '/',
@@ -22,9 +30,14 @@ const routes = [
         alias: '/index'
       },
       {
-        name: 'Servers',
-        path: '/servers',
-        component: Servers,
+        name: 'Player',
+        path: '/player',
+        component: Player,
+      },
+      {
+        name: 'Server',
+        path: '/server',
+        component: Server,
       },
       {
         name: 'Console',
@@ -33,13 +46,12 @@ const routes = [
         meta: {
           requireAdmin: true
         }
+      },
+      {
+        path: '/:pathMatch(.*)*',
+        redirect: '/'
       }
     ]
-  },
-  {
-    name: 'LoginPage',
-    path: '/login',
-    component: LoginPage
   },
 ]
 
@@ -49,24 +61,31 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
-  // console.log(store)
   if (to.meta.requireLogin && !store.state.isLoggedIn) {
     return {
       path: '/login',
-      // 保存我们所在的位置，以便以后再来
+      // 保存我们所在的位置，以便以后再来（“以后再来”以后再写）
       query: { redirect: to.fullPath },
     }
   }
-  // console.log(to, from)
 })
 
-router.beforeEach((to, from) => {
-  if (to.meta.requireAdmin && !store.state.isAdmin) {
-    return {
-      path: from.fullPath
+router.beforeEach(async (to, from) => {
+  if (to.meta.requireAdmin) {
+    
+    try {
+      var res = await isAdmin()
+      store.commit('setAdmin', res.status == 200)
+    } catch (e) {
+      console.log(e)
+    }
+
+    if (!store.state.isAdmin) {
+      return {
+        path: from.fullPath
+      }
     }
   }
-  // console.log(to, from)
 })
 
 export default router
