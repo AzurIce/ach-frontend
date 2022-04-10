@@ -15,6 +15,7 @@ export default {
     MainPage
   },
   beforeMount() {
+    console.log("Running in:", import.meta.env)
     var token = localStorage.getItem('azurcraftToken');
     this.$store.commit('setToken', token)
     if (token != null) {

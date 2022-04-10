@@ -9,7 +9,9 @@ import axios from 'axios'
 const headerJSON = { "Content-Type": "application/json" }
 
 export function postByJson(url, data) {
-  url = "http://localhost:8888" + url
+  if (import.meta.env.DEV) {
+    url = "http://localhost:8888" + url
+  }
   return new Promise((resolve, reject) => {
     axios.post(url, JSON.stringify(data), { headers: headerJSON })
       .then((res) => { resolve(res) })
@@ -18,7 +20,9 @@ export function postByJson(url, data) {
 }
 
 export function get(url) {
-  url = "http://localhost:8888" + url
+  if (import.meta.env.DEV) {
+    url = "http://localhost:8888" + url
+  }
   return new Promise((resolve, reject) => {
     axios.get(url, { headers: { 'Authorization': 'Bearer ' + localStorage.getItem('azurcraftToken') } })
       .then((res) => { resolve(res) })
