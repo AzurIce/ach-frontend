@@ -11,6 +11,8 @@
         </button>
       </div>
 
+      
+      <!-- Microsoft 账号验证登录 -->
       <p class="text-md indent-8 break-all bg-gray-100 rounded-md p-1 shadow">初次登录请使用微软账号验证方式，登陆完成后即可设置用户名及密码（此功能尚在开发中）。</p>
       <div v-if="loginTab == 0" class="flex flex-col space-y-2 w-full">
         <div class="min-w-max w-full flex space-x-2">
@@ -31,22 +33,21 @@
           <button class="pl-2 pr-2 pt-1 pb-1 bg-sky-400 rounded-md text-white" @click="onLoginWithCode">提交</button>
         </div>
       </div>
+
+      <!-- 账号密码登录 -->
       <div v-else class="flex flex-col space-y-2 w-full">
         <p class="mb-1 text-2xl mr-1 flex-1">账号密码登录</p>
-        <!-- <p class="mt-1 mb-1 text-md indent-8">在新打开的窗口中登录你的 Microsoft 账户，待登陆成功后复制地址栏中 "code=" 后面的内容到这里点击提交</p> -->
-        <!-- <div class="mt-1 flex justify-center"> -->
-          <div class="flex space-x-2">
-            <div class="flex flex-col space-y-2 min-w-max">
-              <text>用户名</text>
-              <text>密码</text>
-            </div>
-            <div class="flex-1 flex flex-col space-y-2">
-              <input class="pl-2 pr-2 border rounded-md" v-model="username"/>
-              <input type="password" class="pl-2 pr-2 border rounded-md" v-model="password"/>
-            </div>
+        <div class="flex space-x-2">
+          <div class="flex flex-col space-y-2 min-w-max">
+            <text>用户名</text>
+            <text>密码</text>
           </div>
-          <button class="pl-2 pr-2 pt-1 pb-1 bg-sky-400 rounded-md text-white" @click="onLoginWithAccount">提交</button>
-        <!-- </div> -->
+          <div class="flex-1 flex flex-col space-y-2">
+            <input class="pl-2 pr-2 border rounded-md" v-model="username"/>
+            <input type="password" class="pl-2 pr-2 border rounded-md" v-model="password"/>
+          </div>
+        </div>
+        <button class="pl-2 pr-2 pt-1 pb-1 bg-sky-400 rounded-md text-white" @click="onLoginWithAccount">提交</button>
       </div>
     </div>
   </div>

@@ -7,7 +7,7 @@ import MainPage from './pages/MainPage/MainPage.vue';
 export default {
   data() {
     return {
-      isLoggedIn: false
+      isLoggedIn: true
     }
   },
   components: {
@@ -18,8 +18,9 @@ export default {
 </script>
 
 <template>
-  <MainPage v-if="isLoggedIn" />
-  <LoginPage v-else class="h-screen"/>
+  <router-view></router-view>
+  <!-- <MainPage v-if="isLoggedIn" />
+  <LoginPage v-else class="h-screen"/> -->
 </template>
 
 <style>

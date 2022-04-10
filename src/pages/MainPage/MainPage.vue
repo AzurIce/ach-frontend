@@ -18,14 +18,15 @@
       </div>
     </div>
     <div class="bg-white h-screen flex-1">
-      <ConsoleView />
+      <router-view></router-view>
+      <!-- <Console /> -->
     </div>
   </div>
 </template>
 
 <script>
-import ConsoleView from "../../components/ConsoleView.vue";
-export default { components: { ConsoleView } };
+import Console from "./Console/Console.vue";
+export default { components: { Console } };
 </script>
 
 <style>
