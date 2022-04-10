@@ -1,18 +1,25 @@
 <template>
   <div class="w-screen h-screen flex flex-col justify-center items-center bg-azurcraft bg-no-repeat bg-center ">
-    <div class="flex flex-col items-center min-w-min w-2/5 h-fit top-1/2 p-4 rounded-lg bg-white shadow-md space-y-2">
+    <div class="flex flex-col items-center min-w-450 w-2/5 h-fit top-1/2 p-4 rounded-lg bg-white shadow-md space-y-2">
       <div class="flex justify-center items-center space-x-2 border w-min p-1 rounded-full">
-        <button class="w-10 h-10 rounded-full" :class="[loginTab == 0 ? 'bg-sky-400' : 'bg-gray-100']" @click="onChooseTab(0)"></button>
-        <button class="w-10 h-10 rounded-full" :class="[loginTab == 1 ? 'bg-sky-400' : 'bg-gray-100']" @click="onChooseTab(1)"></button>
+        <button class="w-10 h-10 rounded-full" :class="[loginTab == 0 ? 'bg-sky-400' : 'bg-gray-100']" @click="onChooseTab(0)">
+          <i class="ri-microsoft-fill" :style="[loginTab == 0 ? 'color: white' : '']"></i>
+        </button>
+        <button class="w-10 h-10 rounded-full" :class="[loginTab == 1 ? 'bg-sky-400' : 'bg-gray-100']" @click="onChooseTab(1)">
+          <i class="ri-account-circle-fill" :style="[loginTab == 1 ? 'color: white' : '']"></i>
+          <!-- <i v-else class="ri-account-circle-line"></i> -->
+        </button>
       </div>
 
+      <p class="text-md indent-8 break-all bg-gray-100 rounded-md p-1 shadow">初次登录请使用微软账号验证方式，登陆完成后即可设置用户名及密码（此功能尚在开发中）。</p>
       <div v-if="loginTab == 0" class="flex flex-col space-y-2 w-full">
         <div class="min-w-max w-full flex space-x-2">
           <p class="text-2xl flex-1">Minecraft 微软账号验证</p>
-          <button class="ml-1 w-8 h-8 rounded-full bg-sky-400" :class="getTabStyle"
-            @click="onJumpToLogin">→</button>
+          <button class="ml-1 w-8 h-8 pt-1 rounded-full bg-sky-400" :class="getTabStyle" @click="onJumpToLogin">
+            <i class="ri-share-box-line" style="color: white;"></i>
+          </button>
         </div>
-        <p class="text-md indent-8 break-all">在新打开的窗口中登录你的 Microsoft 账户，待登陆成功后复制地址栏中“code=”后面的内容（到“&”或结尾结束）到这里点击提交</p>
+        <p class="text-md indent-8 break-all">在新打开的窗口中登录你的 Microsoft 账户，待登陆成功后复制地址栏中“code=”后面的内容（到“&”或结尾结束）到这里点击提交。</p>
     
         <p class="text-md break-all">例：</p>
         <p class="bg-slate-600 rounded-md pl-2 pr-2 text-slate-100">https://xxx?code=M.R3_BAY.c3b01707-0687-99e2-ac93-d63ce78091ab&lc=2052</p>
