@@ -1,4 +1,5 @@
 <script>
+import { mapState } from 'vuex';
 import './app.css'
 
 import LoginPage from './pages/LoginPage/LoginPage.vue';
@@ -8,6 +9,7 @@ export default {
   data() {
     return {}
   },
+  computed: mapState(['isLoggedIn', 'token']),
   components: {
     LoginPage,
     MainPage
@@ -23,6 +25,8 @@ export default {
 </script>
 
 <template>
+  {{isLoggedIn}}
+  <!-- {{token}} -->
   <router-view></router-view>
   <!-- <MainPage v-if="isLoggedIn" />
   <LoginPage v-else class="h-screen"/> -->
