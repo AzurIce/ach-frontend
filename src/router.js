@@ -61,7 +61,8 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
-  if (to.meta.requireLogin && !store.state.isLoggedIn) {
+  console.log(`from ${from.path} to ${to.path}`)
+  if (to.meta.requireLogin && !store.state.isLoggedIn && !import.meta.env.DEV) { // 需要login 且 还没login
     return {
       path: '/login',
       // 保存我们所在的位置，以便以后再来（“以后再来”以后再写）
@@ -71,10 +72,9 @@ router.beforeEach((to, from) => {
 })
 
 router.beforeEach(async (to, from) => {
-  if (to.meta.requireAdmin) {
-    
+  if (to.meta.requireAdmin && !import.meta.env.DEV) { // 如果所去页面需要管理员权限
     try {
-      var res = await isAdmin()
+      var res = await isAdmin() // 更新权限
       store.commit('setAdmin', res.status == 200)
     } catch (e) {
       console.log(e)
