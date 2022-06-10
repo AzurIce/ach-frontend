@@ -1,6 +1,6 @@
 <template>
-    <div class="m-2 p-2 w-min flex-y bg-white border rounded">
-        <div class="border-b">PlayerList</div>
+    <div class="m-4 p-4 w-fit flex-y bg-white rounded-lg shadow">
+        <div class="border-b">PlayerList 1/3（假的）</div>
         <div class="flex items-center mt-2">
             <span class="mr-2">HugeGuoGuo</span>
             <div class="h-4 w-4 rounded-full bg-red-400"></div>
