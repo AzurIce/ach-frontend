@@ -6,6 +6,7 @@ const store = createStore({
       token: "",
       isLoggedIn: false,
       isAdmin: false,
+      serverList: [],
     }
   },
   mutations: {
@@ -20,6 +21,9 @@ const store = createStore({
     },
     setToken(state, token) {
       state.token = token;
+    },
+    setServerList(state, list) {
+      state.serverList = list
     }
   }
 })
