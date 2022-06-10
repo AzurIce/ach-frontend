@@ -14,7 +14,7 @@ export default {
   },
   methods: {
     getClass() {
-      if (this.Running) return "bg-green-400";
+      if (this.server.Running) return "bg-green-400";
       else return "bg-red-400";
     },
   },
