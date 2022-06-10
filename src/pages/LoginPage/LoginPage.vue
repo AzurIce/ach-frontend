@@ -127,8 +127,6 @@ M.R3_BAY.c3b01707-0687-99e2-ac93-d63ce78091ab</pre
 </template>
 
 <script>
-import axios from "axios";
-
 import { loginByCode, loginByAccount } from "/src/lib/api/user.js";
 
 export default {
