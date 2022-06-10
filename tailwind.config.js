@@ -8,7 +8,7 @@ module.exports = {
     }),
     extend: {
       backgroundImage: {
-        'azurcraft': "url('src/assets/AzurCraft.svg')"
+        'azurcraft': "url('AzurCraft.svg')"
       },
       minWidth: {
        '0': '0',
