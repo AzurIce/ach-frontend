@@ -1,79 +1,58 @@
 <template>
-  <div class="w-screen h-screen flex-y">
-    <!-- TopBar -->
-    <div class="h-14 bg-white flex items-center pl-2">
-      
-      <button>
-        <i class="ri-menu-line bg-white p-2 mr-2 rounded border hover:ring-2"></i>
-      </button>
+  <div class="w-screen h-screen flex">
+    <!-- Navigation -->
+    <div class="bg-white w-min border-r flex-y">
+      <nav-list-item to="/">
+        <div class="bg-white bg-azurcraft w-10 h-10 rounded-full"></div>
+      </nav-list-item>
+      <nav-list-item to="/server" name="Server">
+        <i class="ri-server-line "></i>
+      </nav-list-item>
 
-      Server:
-      <select>
-        <option>Relax</option>
-      </select>
+      <div
+        class="flex flex-col justify-center items-center p-4 border-b border-l-4"
+        :class="[isExactActive ? 'bg-sky-400' : 'bg-white']"
+      >
+        <div class="bg-slate-300 w-10 h-10 rounded-full"></div>
+        <span>Backups</span>
+      </div>
+      <div
+        class="flex flex-col justify-center items-center p-4 border-b border-l-4"
+        :class="[isExactActive ? 'bg-sky-400' : 'bg-white']"
+      >
+        <div class="bg-slate-300 w-10 h-10 rounded-full"></div>
+        <span>Projects</span>
+      </div>
+
+      <nav-list-item to="/console" name="Console">
+        <i class="ri-terminal-box-line"></i>
+      </nav-list-item>
     </div>
 
-    <!-- Content -->
-    <div class="flex">
-      <div class="bg-white w-min border-r">
-        <router-link v-slot="{ href, isExactActive }" to="/">
-          <div
-            class="flex flex-col justify-center items-center p-4 border-b"
-            :class="[isExactActive ? 'bg-sky-400' : 'bg-white']"
-            :href="href"
-          >
-            <div class="bg-white bg-azurcraft w-14 h-14 rounded-full"></div>
-          </div>
-        </router-link>
-        <router-link v-slot="{ href, isExactActive }" to="/server">
-          <div
-            class="flex flex-col justify-center items-center p-4 border-b"
-            :class="[isExactActive ? 'bg-sky-400' : 'bg-white']"
-            :href="href"
-          >
-            <div class="bg-slate-300 w-10 h-10 rounded-full"></div>
-            <span>Server</span>
-          </div>
-        </router-link>
-        <!-- <router-link v-slot="{href, isExactActive}" to="/backups"> -->
-        <div
-          class="flex flex-col justify-center items-center p-4 border-b"
-          :class="[isExactActive ? 'bg-sky-400' : 'bg-white']"
-        >
-          <div class="bg-slate-300 w-10 h-10 rounded-full"></div>
-          <span>Backups</span>
-        </div>
-        <!-- </router-link> -->
-        <!-- <router-link v-slot="{href, isExactActive}" to="/projects"> -->
-        <div
-          class="flex flex-col justify-center items-center p-4 border-b"
-          :class="[isExactActive ? 'bg-sky-400' : 'bg-white']"
-        >
-          <div class="bg-slate-300 w-10 h-10 rounded-full"></div>
-          <span>Projects</span>
-        </div>
-        <!-- </router-link> -->
-        <router-link v-slot="{ href, isExactActive }" to="/console">
-          <div
-            class="flex flex-col justify-center items-center p-4 border-b"
-            :class="[isExactActive ? 'bg-sky-400' : 'bg-white']"
-            :href="href"
-          >
-            <div class="bg-slate-300 w-10 h-10 rounded-full"></div>
-            <span>Console</span>
-          </div>
-        </router-link>
-        <div
-          class="flex flex-col justify-center items-center p-4 border-b"
-          :class="[isExactActive ? 'bg-sky-400' : 'bg-white']"
-          :href="href"
-        >
-          <button>
-            <i class="ri-logout-box-line" @click="onLogout"></i>
-          </button>
-        </div>
+    <div class="flex flex-col flex-1">
+      <!-- TopBar -->
+      <div class="pl-4 pr-4 h-14 bg-white flex items-center">
+        
+        <!-- <button>
+          <i class="ri-menu-line bg-white p-2 mr-2 rounded border hover:ring-2"></i>
+        </button> -->
+        <span>往这儿放点东西</span>
+        <!-- <span>
+          Server:
+        </span>
+        <select>
+          <option>Relax</option>
+        </select> -->
+
+        <div class="flex-1"></div>
+
+        <button class="mt-2 mb-2 rounded-full">
+          <i class="ri-logout-box-line" @click="onLogout"></i>
+        </button>
       </div>
-      <div class="bg-background h-screen flex-1">
+
+      <!-- Content -->
+      <div class="flex flex-col bg-background h-screen flex-1">
         <router-view></router-view>
         <!-- <Console /> -->
       </div>
@@ -82,15 +61,17 @@
 </template>
 
 <script>
+import NavListItem from '../../components/NavListItem.vue';
 export default {
-  methods: {
-    onLogout() {
-      localStorage.setItem('azurcraftToken', "")
-      this.$store.commit('setToken', "")
-      this.$store.commit('unsetLogin')
-      this.$router.push("/login")
-    }
-  },
+    methods: {
+        onLogout() {
+            localStorage.setItem("azurcraftToken", "");
+            this.$store.commit("setToken", "");
+            this.$store.commit("unsetLogin");
+            this.$router.push("/login");
+        }
+    },
+    components: { NavListItem }
 };
 </script>
 
