@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen flex flex-col justify-center p-4">
+  <div class="h-full flex flex-col justify-center p-4">
     <!-- <div className='ServerConsoleInfo'>
         <text style={{margin: '0px 10px'}} >Connection: </text>
         {this.getStatus()}
@@ -21,13 +21,15 @@
         whitespace-pre-wrap
         break-all
         text-left
-        overflow-x-hidden overflow-y-auto
+        overflow-y-auto
       "
-    >
-    {{lines}}
-    </pre>
+      >{{ lines }}</pre>
     <div class="mt-1 flex justify-center items-stretch">
-      <input class="mr-1 pl-2 border rounded-md flex-1" v-model="input" @keypress="onKeyPressed"/>
+      <input
+        class="mr-1 pl-2 border rounded-md flex-1"
+        v-model="input"
+        @keypress="onKeyPressed"
+      />
       <button
         class="ml-1 rounded-md bg-sky-400 pt-1 pb-1 pl-2 pr-2"
         @click="onSendMessage"
@@ -51,7 +53,7 @@ export default {
   methods: {
     onKeyPressed(e) {
       if (e.keyCode == 13) {
-        this.onSendMessage()
+        this.onSendMessage();
       }
       // console.log(e)
     },
@@ -61,9 +63,9 @@ export default {
       else return "bg-red-400";
     },
     onSendMessage() {
-      console.log("[onSendMessage]")
+      console.log("[onSendMessage]");
       if (this.input == "" || this.status !== "open") {
-        console.log(this.input, this.status)
+        console.log(this.input, this.status);
         return;
       }
 

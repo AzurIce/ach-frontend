@@ -1,7 +1,7 @@
 <template>
   <div class="w-screen h-screen flex">
     <!-- Navigation -->
-    <div class="bg-white w-min border-r flex-y">
+    <div class="bg-white w-min border-r flex flex-col">
       <nav-list-item to="/">
         <div class="bg-white bg-azurcraft w-10 h-10 rounded-full"></div>
       </nav-list-item>
@@ -29,7 +29,7 @@
       </nav-list-item>
     </div>
 
-    <div class="flex flex-col flex-1">
+    <div class="flex-1 flex flex-col h-screen overflow-hidden">
       <!-- TopBar -->
       <div class="pl-4 pr-4 h-14 bg-white flex items-center">
         
@@ -52,7 +52,7 @@
       </div>
 
       <!-- Content -->
-      <div class="flex flex-col bg-background h-screen flex-1">
+      <div class="h-0 flex-1 flex flex-col bg-background">
         <router-view></router-view>
         <!-- <Console /> -->
       </div>
