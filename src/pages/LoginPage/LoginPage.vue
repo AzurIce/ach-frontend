@@ -140,6 +140,13 @@ export default {
   },
   computed: {},
   methods: {
+    onLoggedIn(token, userName) {
+      this.$store.commit("setToken", token);
+      this.$store.commit("setLogin");
+      this.$store.commit("setUserName", userName);
+      localStorage.setItem("azurcraftToken", token);
+      this.$router.push("/");
+    },
     onLoginWithCode() {
       if (this.code == "") {
         // TODO: code不能为空
@@ -148,17 +155,14 @@ export default {
       loginByCode(this.code)
         .then((res) => {
           console.log(res);
-          var token = JSON.parse(res.data).token;
-          this.$store.commit("setToken", token);
-          this.$store.commit("setLogin");
-          localStorage.setItem("azurcraftToken", token);
-          this.$router.push("/");
+          var obj = JSON.parse(res.data)
+          this.onLoggedIn(obj.token, obj.user_name)
         })
         .catch((err) => {
           console.log(err, err.response);
           var errorString = JSON.parse(err.response.data).error;
           // TODO: toast
-          // console.log(JSON.parse(err.response.data));
+          console.log(errorString);
         });
       console.log(this.code);
     },
@@ -170,24 +174,21 @@ export default {
       loginByAccount(this.username, this.password)
         .then((res) => {
           console.log(res);
-          var token = JSON.parse(res.data).token;
-          this.$store.commit("setToken", token);
-          this.$store.commit("setLogin");
-          localStorage.setItem("azurcraftToken", token);
-          this.$router.push("/");
+          var obj = JSON.parse(res.data)
+          this.onLoggedIn(obj.token, obj.user_name)
         })
         .catch((err) => {
           console.log(err, err.response);
           // TODO: toast
           var errorString = JSON.parse(err.response.data).error;
-          // console.log(JSON.parse(err.response.data));
+          console.log(errorString);
         });
       console.log(this.username, this.password);
     },
     onChooseTab(i) {
       this.loginTab = i;
     },
-    onJumpToLogin(e) {
+    onJumpToLogin() {
       var screenW = window.screen.availWidth;
       var screenH = window.screen.availHeight;
 
@@ -201,10 +202,6 @@ export default {
           (screenH - 500) / 2 +
           ",width=600,height=500"
       );
-    },
-    onSubmitCode(e) {
-      console.log("[LoginPage]: onSubmitCode");
-      // TODO: Send request to backend to get a JWT Code
     },
   },
 };

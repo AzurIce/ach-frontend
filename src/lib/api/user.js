@@ -9,5 +9,18 @@ export function loginByAccount(name, password) {
 }
 
 export function isAdmin() {
+  // console.log("API - isAdmin")
   return get('/api/user/isAdmin')
+}
+
+export function registerByCode(code) {
+  return postByJson('/api/admin/user/register', { code })
+}
+
+export function getUserList() {
+  return get('/api/admin/user')
+}
+
+export function getUserInfo() {
+
 }

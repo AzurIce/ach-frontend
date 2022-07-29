@@ -1,5 +1,5 @@
 <template>
-  <div class="m-4 p-4 w-auto flex-y h-full bg-white rounded-lg shadow">
+  <div class="m-4 p-4 w-auto flex-y bg-white rounded-lg shadow">
     <div class="border-b">ServerList</div>
     <ServerListItem v-for="server in serverList" :key="server.Name" :server="server"/>
   </div>

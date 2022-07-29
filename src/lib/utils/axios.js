@@ -13,7 +13,12 @@ export function postByJson(url, data) {
     url = "http://localhost:8888" + url
   }
   return new Promise((resolve, reject) => {
-    axios.post(url, JSON.stringify(data), { headers: headerJSON })
+    axios.post(url, JSON.stringify(data), {
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('azurcraftToken'),
+        "Content-Type": "application/json"
+      }
+    })
       .then((res) => { resolve(res) })
       .catch((err) => { reject(err) })
   })

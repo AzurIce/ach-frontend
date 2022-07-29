@@ -4,12 +4,16 @@ const store = createStore({
   state() {
     return {
       token: "",
+      userName: "",
       isLoggedIn: false,
       isAdmin: false,
       serverList: [],
     }
   },
   mutations: {
+    setUserName(state, userName) {
+      state.userName = userName;
+    },
     setLogin(state) {
       state.isLoggedIn = true;
     },

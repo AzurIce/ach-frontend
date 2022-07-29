@@ -5,6 +5,7 @@ import Console from './pages/MainPage/Console/Console.vue'
 import Index from './pages/MainPage/Index/Index.vue'
 import Server from './pages/MainPage/Server/Server.vue'
 import Player from './pages/MainPage/Player/Player.vue'
+import Manage from './pages/MainPage/Manage/Manage.vue'
 import store from './store'
 
 import { isAdmin } from './lib/api/user'
@@ -48,6 +49,14 @@ const routes = [
         }
       },
       {
+        name: 'Manage',
+        path: '/manage',
+        component: Manage,
+        meta: {
+          requireAdmin: true
+        }
+      },
+      {
         path: '/:pathMatch(.*)*',
         redirect: '/'
       }
@@ -72,7 +81,8 @@ router.beforeEach((to, from) => {
 })
 
 router.beforeEach(async (to, from) => {
-  if (to.meta.requireAdmin && !import.meta.env.DEV) { // 如果所去页面需要管理员权限
+  // console.log("BeforeEach")
+  if (to.meta.requireAdmin/* && !import.meta.env.DEV*/) { // 如果所去页面需要管理员权限
     try {
       var res = await isAdmin() // 更新权限
       store.commit('setAdmin', res.status == 200)

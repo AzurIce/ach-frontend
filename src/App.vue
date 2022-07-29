@@ -5,6 +5,8 @@ import './app.css'
 import LoginPage from './pages/LoginPage/LoginPage.vue';
 import MainPage from './pages/MainPage/MainPage.vue';
 
+import { isAdmin } from './lib/api/user';
+
 export default {
   data() {
     return {}
@@ -20,6 +22,17 @@ export default {
     this.$store.commit('setToken', token)
     if (token != null) {
       this.$store.commit('setLogin')
+    }
+    this.updateAdmin()
+  },
+  methods: {
+    async updateAdmin() {
+      try {
+        var res = await isAdmin() // 更新权限
+        this.$store.commit('setAdmin', res.status == 200)
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
 }
