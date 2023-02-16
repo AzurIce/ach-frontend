@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center mt-2">
     <!-- {{server}} -->
-    <span class="mr-2">{{server.Name}}</span>
+    <span class="mr-2">{{server.name}}</span>
     <div class="h-4 w-4 rounded-full" :class="getClass()"></div>
   </div>
 </template>
@@ -14,11 +14,13 @@ export default {
   },
   methods: {
     getClass() {
-      if (this.server.Running) return "bg-green-400";
+      if (this.server.running) return "bg-green-400";
       else return "bg-red-400";
     },
   },
-  data() {},
+  data() {
+    return {}
+  },
 };
 </script>
 

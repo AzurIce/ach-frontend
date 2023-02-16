@@ -7,12 +7,12 @@
     </th> -->
     <td>
       <div class="font-bold">{{ playerName }}</div>
-      <span class="badge badge-ghost badge-sm">{{ playerUUID }}</span>
+      <span class="badge badge-ghost badge-sm">{{ uuid }}</span>
     </td>
     <td>
       <div class="flex items-center space-x-3">
         <div>
-          <div class="font-bold">{{ userName }}</div>
+          <div class="font-bold">{{ username }}</div>
           <!-- <div class="text-sm opacity-50"></div> -->
         </div>
       </div>
@@ -29,7 +29,7 @@
 
 <script setup>
 import { defineProps } from 'vue';
-const props = defineProps(['playerUUID', 'playerName', 'userName', 'isAdmin'])
+const props = defineProps(['uuid', 'playerName', 'username', 'isAdmin'])
 </script>
 
 <style scoped>

@@ -30,7 +30,7 @@
         <i class="ri-server-line "></i>
       </nav-list-item>
 
-      <div class="flex flex-col justify-center items-center p-4 border-b border-l-4"
+      <!-- <div class="flex flex-col justify-center items-center p-4 border-b border-l-4"
         :class="[isExactActive ? 'bg-sky-400' : 'bg-white']">
         <div class="bg-slate-300 w-10 h-10 rounded-full"></div>
         <span>Backups</span>
@@ -39,7 +39,7 @@
         :class="[isExactActive ? 'bg-sky-400' : 'bg-white']">
         <div class="bg-slate-300 w-10 h-10 rounded-full"></div>
         <span>Projects</span>
-      </div>
+      </div> -->
 
       <nav-list-item to="/console" name="Console">
         <i class="ri-terminal-box-line"></i>
@@ -62,7 +62,7 @@
 
         <div class="dropdown">
           <div tabindex="0" class="m-1 btn btn-ghost flex items-center">
-            <div v-if="isAdmin" class="badge badge-primary">Admin</div>
+            <div v-if="user.is_admin" class="badge badge-primary">Admin</div>
             <div v-else class="badge">User</div>
             <div class="ml-2">{{ user.player_name }}</div>
           </div>

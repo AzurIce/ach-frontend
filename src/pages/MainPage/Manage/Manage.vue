@@ -6,75 +6,75 @@ import { registerByCode, getUserList } from '../../../lib/api/user.js'
 
 const userList = ref([{
   uuid: "asdfg-asdfg-asdfg-asdfg-asdfg",
-  playerName: "PlayerName1",
-  userName: "UserName1",
-  isAdmin: true
+  player_name: "PlayerName1",
+  username: "UserName1",
+  is_admin: true
 },
 {
   uuid: "asdfg-asdfg-asdfg-asdfg-asdfg",
-  playerName: "PlayerName2",
-  userName: "UserName2",
-  isAdmin: false
+  player_name: "PlayerName2",
+  username: "UserName2",
+  is_admin: false
 },
 {
   uuid: "asdfg-asdfg-asdfg-asdfg-asdfg",
-  playerName: "PlayerName2",
-  userName: "UserName2",
-  isAdmin: false
+  player_name: "PlayerName2",
+  username: "UserName2",
+  is_admin: false
 },
 {
   uuid: "asdfg-asdfg-asdfg-asdfg-asdfg",
-  playerName: "PlayerName2",
-  userName: "UserName2",
-  isAdmin: false
+  player_name: "PlayerName2",
+  username: "UserName2",
+  is_admin: false
 },
 {
   uuid: "asdfg-asdfg-asdfg-asdfg-asdfg",
-  playerName: "PlayerName2",
-  userName: "UserName2",
-  isAdmin: false
+  player_name: "PlayerName2",
+  username: "UserName2",
+  is_admin: false
 },
 {
   uuid: "asdfg-asdfg-asdfg-asdfg-asdfg",
-  playerName: "PlayerName2",
-  userName: "UserName2",
-  isAdmin: false
+  player_name: "PlayerName2",
+  username: "UserName2",
+  is_admin: false
 },
 {
   uuid: "asdfg-asdfg-asdfg-asdfg-asdfg",
-  playerName: "PlayerName2",
-  userName: "UserName2",
-  isAdmin: false
+  player_name: "PlayerName2",
+  username: "UserName2",
+  is_admin: false
 },
 {
   uuid: "asdfg-asdfg-asdfg-asdfg-asdfg",
-  playerName: "PlayerName2",
-  userName: "UserName2",
-  isAdmin: false
+  player_name: "PlayerName2",
+  username: "UserName2",
+  is_admin: false
 },
 {
   uuid: "asdfg-asdfg-asdfg-asdfg-asdfg",
-  playerName: "PlayerName2",
-  userName: "UserName2",
-  isAdmin: false
+  player_name: "PlayerName2",
+  username: "UserName2",
+  is_admin: false
 },
 {
   uuid: "asdfg-asdfg-asdfg-asdfg-asdfg",
-  playerName: "PlayerName2",
-  userName: "UserName2",
-  isAdmin: false
+  player_name: "PlayerName2",
+  username: "UserName2",
+  is_admin: false
 },
 {
   uuid: "asdfg-asdfg-asdfg-asdfg-asdfg",
-  playerName: "PlayerName2",
-  userName: "UserName2",
-  isAdmin: false
+  player_name: "PlayerName2",
+  username: "UserName2",
+  is_admin: false
 },
 {
   uuid: "asdfg-asdfg-asdfg-asdfg-asdfg",
-  playerName: "PlayerName2",
-  userName: "UserName2",
-  isAdmin: false
+  player_name: "PlayerName2",
+  username: "UserName2",
+  is_admin: false
 }])
 
 onMounted(updateUserList)
@@ -152,10 +152,11 @@ function onJumpToLogin() {
         </thead>
         <tbody>
           <UserListItem v-for="user in userList"
-          :playerUUID="user.PlayerUUID"
-          :playerName="user.playerName"
-          :userName="user.Name"
-          :isAdmin="user.IsAdmin"
+          :key="user.uuid"
+          :uuid="user.uuid"
+          :playerName="user.player_name"
+          :username="user.username"
+          :isAdmin="user.is_admin"
           />
         </tbody>
         <!-- foot -->
@@ -163,7 +164,7 @@ function onJumpToLogin() {
           <tr>
             <!-- <th></th> -->
             <th>PlayerInfo</th>
-            <th>UserName</th>
+            <th>Username</th>
             <th>IsAdmin</th>
             <th>Operations</th>
             <th></th>

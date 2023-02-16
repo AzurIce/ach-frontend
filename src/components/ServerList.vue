@@ -1,7 +1,7 @@
 <template>
   <div class="m-4 p-4 w-auto flex-y bg-white rounded-lg shadow">
     <div class="border-b">ServerList</div>
-    <ServerListItem v-for="server in serverList" :key="server.Name" :server="server"/>
+    <ServerListItem v-for="server in serverList" :key="server.name" :server="server"/>
   </div>
 </template>
 
@@ -12,6 +12,9 @@ import ServerListItem from './ServerListItem.vue';
 
 export default {
     name: "ServerList",
+    data() {
+        return {}
+    },
     computed: mapState(['serverList']),
     methods: {
         updateServerList() {
