@@ -83,6 +83,7 @@ const registerCode = ref("")
 
 async function updateUserList() {
   var res = await getUserList()
+  res = res.data
   console.log(res.data)
   userList.value = res.data
 }

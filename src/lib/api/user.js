@@ -4,8 +4,8 @@ export function loginByCode(code) {
   return postByJson('/api/user/login', { code })
 }
 
-export function loginByAccount(name, password) {
-  return postByJson('/api/user/login', { name, password })
+export function loginByAccount(username, password) {
+  return postByJson('/api/user/login', { username, password })
 }
 
 export function isAdmin() {
