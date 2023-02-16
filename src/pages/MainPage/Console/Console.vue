@@ -84,8 +84,7 @@ export default {
           window.location.hostname
             .replace("http://", "")
             .replace("https://", "") +
-          ":8888/api/admin/server/console?token=" +
-          localStorage.getItem("azurcraftToken")
+          ":8888/api/servers/console"
       );
       this.status = "connecting";
       this.socket.onopen = (e) => {

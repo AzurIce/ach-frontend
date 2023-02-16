@@ -18,22 +18,22 @@ export default {
   },
   beforeMount() {
     console.log("Running in:", import.meta.env)
-    var token = localStorage.getItem('azurcraftToken');
+    var token = localStorage.getItem('ACHToken');
     this.$store.commit('setToken', token)
     if (token != null) {
       this.$store.commit('setLogin')
     }
-    this.updateAdmin()
+    // this.updateAdmin()
   },
   methods: {
-    async updateAdmin() {
-      try {
-        var res = await isAdmin() // 更新权限
-        this.$store.commit('setAdmin', res.status == 200)
-      } catch (e) {
-        console.log(e)
-      }
-    }
+    // async updateAdmin() {
+    //   try {
+    //     var res = await isAdmin() // 更新权限
+    //     this.$store.commit('setAdmin', res.status == 200)
+    //   } catch (e) {
+    //     console.log(e)
+    //   }
+    // }
   }
 }
 </script>

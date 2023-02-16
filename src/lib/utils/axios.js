@@ -15,7 +15,7 @@ export function postByJson(url, data) {
   return new Promise((resolve, reject) => {
     axios.post(url, JSON.stringify(data), {
       headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('azurcraftToken'),
+        'Authorization': 'Bearer ' + localStorage.getItem('ACHToken'),
         "Content-Type": "application/json"
       }
     })
@@ -29,7 +29,7 @@ export function get(url) {
     url = "http://localhost:8888" + url
   }
   return new Promise((resolve, reject) => {
-    axios.get(url, { headers: { 'Authorization': 'Bearer ' + localStorage.getItem('azurcraftToken') } })
+    axios.get(url, { headers: { 'Authorization': 'Bearer ' + localStorage.getItem('ACHToken') } })
       .then((res) => { resolve(res) })
       .catch((err) => { reject(err) })
   })

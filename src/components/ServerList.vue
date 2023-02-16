@@ -17,8 +17,9 @@ export default {
         updateServerList() {
             getServerList().then((res) => {
                 console.log(res);
+                res = res.data
                 // this.serverList = JSON.parse(res.data)
-                this.$store.commit("setServerList", JSON.parse(res.data))
+                this.$store.commit("setServerList", res.data)
             });
         },
     },

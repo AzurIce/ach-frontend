@@ -80,17 +80,18 @@ router.beforeEach((to, from) => {
   }
 })
 
-router.beforeEach(async (to, from) => {
+router.beforeEach((to, from) => {
   // console.log("BeforeEach")
   if (to.meta.requireAdmin/* && !import.meta.env.DEV*/) { // 如果所去页面需要管理员权限
-    try {
-      var res = await isAdmin() // 更新权限
-      store.commit('setAdmin', res.status == 200)
-    } catch (e) {
-      console.log(e)
-    }
-
-    if (!store.state.isAdmin) {
+    // try {
+    //   var res = await isAdmin() // 更新权限
+    //   store.commit('setAdmin', res.status == 200)
+    // } catch (e) {
+    //   console.log(e)
+    // }
+    
+    console.log("user: ", store.state.user)
+    if (!store.state.user.is_admin) {
       return {
         path: from.fullPath
       }

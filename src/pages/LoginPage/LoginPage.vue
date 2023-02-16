@@ -140,11 +140,11 @@ export default {
   },
   computed: {},
   methods: {
-    onLoggedIn(token, userName) {
-      this.$store.commit("setToken", token);
+    onLoggedIn(data) {
+      this.$store.commit("setToken", data.token);
       this.$store.commit("setLogin");
-      this.$store.commit("setUserName", userName);
-      localStorage.setItem("azurcraftToken", token);
+      this.$store.commit("setUser", data.user);
+      localStorage.setItem("ACHToken", data.token);
       this.$router.push("/");
     },
     onLoginWithCode() {
@@ -155,14 +155,14 @@ export default {
       loginByCode(this.code)
         .then((res) => {
           console.log(res);
-          var obj = JSON.parse(res.data)
-          this.onLoggedIn(obj.token, obj.user_name)
+          res = res.data
+          this.onLoggedIn(res.data)
         })
         .catch((err) => {
-          console.log(err, err.response);
-          var errorString = JSON.parse(err.response.data).error;
+          console.log(err.response);
+          err = err.response.data
           // TODO: toast
-          console.log(errorString);
+          console.log(err.error);
         });
       console.log(this.code);
     },
@@ -174,14 +174,14 @@ export default {
       loginByAccount(this.username, this.password)
         .then((res) => {
           console.log(res);
-          var obj = JSON.parse(res.data)
-          this.onLoggedIn(obj.token, obj.user_name)
+          res = res.data
+          this.onLoggedIn(res.data)
         })
         .catch((err) => {
-          console.log(err, err.response);
+          console.log(err);
+          err = err.response.data
           // TODO: toast
-          var errorString = JSON.parse(err.response.data).error;
-          console.log(errorString);
+          console.log(err.error);
         });
       console.log(this.username, this.password);
     },
