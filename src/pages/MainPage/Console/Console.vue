@@ -84,7 +84,8 @@ export default {
           window.location.hostname
             .replace("http://", "")
             .replace("https://", "") +
-          ":8888/api/servers/console"
+          ":8888/api/servers/console?token=" +
+          localStorage.getItem("ACHToken")
       );
       this.status = "connecting";
       this.socket.onopen = (e) => {
